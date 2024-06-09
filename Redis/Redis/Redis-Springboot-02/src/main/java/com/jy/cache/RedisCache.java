@@ -61,4 +61,6 @@ public class RedisCache implements Cache {
         redisTemplate.setHashKeySerializer(new StringRedisSerializer());
         return redisTemplate;
     }
+
+
 }

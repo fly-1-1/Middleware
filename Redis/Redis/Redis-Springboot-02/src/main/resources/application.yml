@@ -7,7 +7,7 @@ spring:
   data:
     redis:
       port: 6380
-      host: 192.168.157.137
+      host: 192.168.157.138
       database: 0
 
 mybatis-plus:

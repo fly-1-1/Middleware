@@ -1,8 +1,9 @@
-package com.jy.service;
+package com.jy.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.jy.entity.User;
 import com.jy.mapper.UserMapper;
+import com.jy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.stereotype.Service;
