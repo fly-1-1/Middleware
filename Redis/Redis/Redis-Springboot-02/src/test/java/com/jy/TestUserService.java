@@ -25,4 +25,20 @@ public class TestUserService {
 
     }
 
+    @Test
+    public void testById() {
+
+        userService.getById(1);
+
+         userService.getById(1);
+
+    }
+
+    @Test
+    public void testDel() {
+
+        userService.removeById(1);
+
+    }
+
 }

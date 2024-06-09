@@ -1,6 +1,7 @@
 package com.jy.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.jy.cache.RedisCache;
 import com.jy.entity.User;
 import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.Mapper;
@@ -12,7 +13,7 @@ import java.util.List;
 
 
 @Mapper
-@CacheNamespace(size = 512)
+@CacheNamespace(implementation = RedisCache.class)
 public interface UserMapper extends BaseMapper<User>  {
 
     public List<User> findAll();
