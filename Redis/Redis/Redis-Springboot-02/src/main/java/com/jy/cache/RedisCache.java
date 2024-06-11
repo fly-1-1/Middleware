@@ -28,7 +28,7 @@ public class RedisCache implements Cache {
 
         System.out.println("key = " + key + ", value = " + value);
         //redis中的hash缓存
-        getRedisTemplate().opsForHash().put(getKey2Md5(this.id.toString()), key.toString(), value);
+        getRedisTemplate().opsForHash().put(this.id.toString(), getKey2Md5(key.toString()) , value);
 
 
         if (id.equals("com.jy.mapper.UserMapper")){
@@ -38,8 +38,6 @@ public class RedisCache implements Cache {
 
     @Override
     public Object getObject(Object key) {
-
-
         return getRedisTemplate().opsForHash().get(id.toString(),getKey2Md5(key.toString()));
     }
 

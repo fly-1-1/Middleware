@@ -6,9 +6,13 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/redis
   data:
     redis:
-      port: 6380
-      host: 192.168.157.138
-      database: 0
+      sentinel:
+        master: mymaster
+        nodes: 192.168.157.140:26379
+  #    redis:
+#      port: 6380
+#      host: 192.168.157.138
+#      database: 0
 
 mybatis-plus:
   type-aliases-package: com.jy.entity
