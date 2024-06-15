@@ -1,5 +1,6 @@
 package com.jy.helloworld;
 
+import com.jy.helloworld.utils.MqUtils;
 import com.rabbitmq.client.*;
 import org.junit.Test;
 
@@ -10,21 +11,23 @@ public class Consumer {
 
 
     public static void main(String[] args) throws IOException, TimeoutException {
-        //创建连接mq的连接工厂对象
-        ConnectionFactory connectionFactory = new ConnectionFactory();
-        //设置连接mq主机
-        connectionFactory.setHost("192.168.157.140");
-        //设置连接mq端口
-        connectionFactory.setPort(5672);
-        //设置连接那个虚拟主机
-        connectionFactory.setVirtualHost("/ems");
-        //设置用户名和密码
-        connectionFactory.setUsername("ems");
-        connectionFactory.setPassword("root");
+//        //创建连接mq的连接工厂对象
+//        ConnectionFactory connectionFactory = new ConnectionFactory();
+//        //设置连接mq主机
+//        connectionFactory.setHost("192.168.157.140");
+//        //设置连接mq端口
+//        connectionFactory.setPort(5672);
+//        //设置连接那个虚拟主机
+//        connectionFactory.setVirtualHost("/ems");
+//        //设置用户名和密码
+//        connectionFactory.setUsername("ems");
+//        connectionFactory.setPassword("root");
+//
+//
+//        //获取连接对象
+//        Connection connection = connectionFactory.newConnection();
+        Connection connection = MqUtils.getConnection();
 
-
-        //获取连接对象
-        Connection connection = connectionFactory.newConnection();
         //获取连接中的通道对象
         Channel channel = connection.createChannel();
         //绑定对应的消息队列
@@ -44,8 +47,7 @@ public class Consumer {
         });
 
         //关闭连接
-        //channel.close();
-        //connection.close();
+        //MqUtils.closeConnection(channel, connection);
     }
 
 
