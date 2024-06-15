@@ -29,8 +29,6 @@ public class Provider {
 
         MqUtils.closeConnection(channel, connection);
 
-
-
     }
 
 }
