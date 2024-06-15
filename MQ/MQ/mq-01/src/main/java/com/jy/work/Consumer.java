@@ -1,6 +1,6 @@
 package com.jy.work;
 
-import com.jy.work.utils.MqUtils;
+import com.jy.utils.MqUtils;
 import com.rabbitmq.client.*;
 
 import java.io.IOException;

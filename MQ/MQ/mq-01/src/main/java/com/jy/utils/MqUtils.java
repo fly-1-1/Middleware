@@ -1,4 +1,4 @@
-package com.jy.helloworld.utils;
+package com.jy.utils;
 
 
 import com.rabbitmq.client.Channel;

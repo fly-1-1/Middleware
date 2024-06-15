@@ -1,9 +1,8 @@
 package com.jy.helloworld;
 
-import com.jy.helloworld.utils.MqUtils;
+import com.jy.utils.MqUtils;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.MessageProperties;
 import org.junit.Test;
 

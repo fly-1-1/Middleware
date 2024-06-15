@@ -1,8 +1,7 @@
 package com.jy.helloworld;
 
-import com.jy.helloworld.utils.MqUtils;
+import com.jy.utils.MqUtils;
 import com.rabbitmq.client.*;
-import org.junit.Test;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
