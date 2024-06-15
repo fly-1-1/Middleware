@@ -1,18 +1,15 @@
 package com.jy.helloworld;
 
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.*;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-public class Provider {
+public class Consumer {
 
-    //生产消息
-    @Test
-    public void testSendMessage() throws IOException, TimeoutException {
+
+    public static void main(String[] args) throws IOException, TimeoutException {
         //创建连接mq的连接工厂对象
         ConnectionFactory connectionFactory = new ConnectionFactory();
         //设置连接mq主机
@@ -25,23 +22,36 @@ public class Provider {
         connectionFactory.setUsername("ems");
         connectionFactory.setPassword("root");
 
+
         //获取连接对象
         Connection connection = connectionFactory.newConnection();
         //获取连接中的通道对象
         Channel channel = connection.createChannel();
         //绑定对应的消息队列
         //参数一：队列名称 参数二：是否持久化  参数三：是否独占  参数四：是否自动删除  参数五：额外参数
-        channel.queueDeclare("hello",false,false,false,null);
-
-        //发布消息
-        //参数一：交换机名称  参数二：队列名称  参数三：传递消息的额外设置  参数四：消息内容
-        channel.basicPublish("","hello",null,"hello mq".getBytes());
-
-        channel.close();
-        connection.close();
+        channel.queueDeclare("hello", false, false, false, null);
 
 
+        //消费消息
+        //参数一：队列名称 参数二：是否自动确认  参数三：回调对象
+        channel.basicConsume("hello", true, new DefaultConsumer(channel) {
 
+            //参数一：消息对象,参数二：消息的属性,参数三：消息体
+            @Override
+            public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
+                System.out.println("new message received: " + new String(body));
+            }
+        });
+
+        //关闭连接
+        //channel.close();
+        //connection.close();
     }
 
+
+   /* @Test
+    public void testConsumer() throws IOException, TimeoutException {
+
+
+    }*/
 }
